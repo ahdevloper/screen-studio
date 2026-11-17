@@ -1,0 +1,1 @@
+ScreenStudio.storage={key:"screen-studio-settings-v1",load(){try{return JSON.parse(localStorage.getItem(this.key)||"{}")}catch{return{}}},save(v){try{localStorage.setItem(this.key,JSON.stringify(v))}catch{}},clear(){localStorage.removeItem(this.key)}};

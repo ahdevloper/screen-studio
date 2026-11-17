@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#2dba20">
+<meta name="description" content="Screen Studio — تسجيل الشاشة والتقاط الصور من المتصفح.">
+<title>Screen Studio | مسجل الشاشة</title>
+<link rel="stylesheet" href="css/variables.css"><link rel="stylesheet" href="css/base.css"><link rel="stylesheet" href="css/layout.css"><link rel="stylesheet" href="css/components.css"><link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+<header class="topbar"><a class="brand" href="#"><span class="logo">S</span><span>Screen <b>Studio</b><small>مسجل الشاشة</small></span></a><div class="top-actions"><button class="icon-btn" id="helpBtn" aria-label="المساعدة">؟</button><button class="secondary-btn" id="settingsBtn">⚙ الإعدادات</button></div></header>
+<main class="shell">
+<section class="intro"><div><p class="eyebrow">مساحة التسجيل الخاصة بك</p><h1>سجّل ما يحدث على شاشتك</h1><p class="muted">تسجيل الشاشة والصوت والتقاط الصور مباشرة من المتصفح.</p></div><span class="status" id="supportStatus">جارٍ فحص التوافق…</span></section>
+<section class="workspace">
+<div class="panel preview-panel"><div class="panel-head"><h2>معاينة التسجيل</h2><span id="timer">00:00:00</span></div><div class="preview" id="preview"><video id="video" autoplay muted playsinline></video><div class="placeholder" id="placeholder"><div class="screen-icon">▣</div><h3>مساحتك جاهزة للتسجيل</h3><p>اضغط بدء التسجيل واختر الشاشة أو النافذة من نافذة المتصفح.</p></div><span class="recording-tag" id="recordingTag">● جارٍ التسجيل</span></div>
+<div class="controls"><button class="primary-btn" id="startBtn">● بدء التسجيل</button><button class="control-btn" id="pauseBtn" disabled>Ⅱ إيقاف مؤقت</button><button class="control-btn danger" id="stopBtn" disabled>■ إيقاف</button><button class="control-btn" id="shotBtn" disabled>▣ لقطة شاشة</button></div><p class="hint" id="message" role="status">يتم حفظ الملفات على جهازك ولا يتم رفعها إلى خادم.</p></div>
+<aside class="side">
+<section class="panel"><div class="panel-head"><h2>مصدر التسجيل</h2><span class="step">01</span></div><label>مصدر الالتقاط<select id="source"><option value="screen">الشاشة بالكامل</option><option value="window">نافذة تطبيق</option><option value="tab">علامة تبويب</option></select></label>
+<label class="toggle"><span><b>تسجيل صوت النظام</b><small>حسب دعم المتصفح ومصدر الالتقاط</small></span><input id="systemAudio" type="checkbox"></label>
+<label class="toggle"><span><b>تسجيل الميكروفون</b><small>إضافة صوتك إلى التسجيل</small></span><input id="microphone" type="checkbox"></label></section>
+<section class="panel"><div class="panel-head"><h2>جودة التسجيل</h2><span class="step">02</span></div><label>معدل الإطارات<select id="fps"><option value="30">30 إطار/ث</option><option value="60">60 إطار/ث</option><option value="24">24 إطار/ث</option></select></label><label>صيغة الفيديو<select id="format"><option value="webm">WebM — مدعوم مباشرة</option><option value="mp4">MP4 — عند دعم المتصفح</option></select></label><label>اسم الملف<input id="filename" value="screen-recording" maxlength="60"></label><button class="secondary-btn wide" id="downloadBtn" disabled>تنزيل التسجيل</button></section>
+</aside></section>
+<section class="panel library"><div class="panel-head"><div><p class="eyebrow">ملفاتك</p><h2>التسجيلات واللقطات</h2></div><span id="count">0 ملف</span></div><p id="emptyLibrary" class="muted center">ستظهر الملفات التي تنشئها هنا.</p><div id="fileList" class="file-list"></div></section>
+<footer><span>Screen Studio</span><span>صُنع بواسطة <a href="https://github.com/ahdevloper" target="_blank" rel="noopener">@ahdevloper</a></span></footer>
+</main>
+<dialog id="settingsDialog"><form method="dialog" class="dialog-head"><h2>الإعدادات</h2><button class="icon-btn">×</button></form><div class="dialog-body"><details open><summary>إعدادات الحفظ</summary><label>صيغة الفيديو الافتراضية<select id="defaultFormat"><option value="webm">WebM</option><option value="mp4">MP4 (عند الدعم)</option></select></label><label>صيغة لقطات الشاشة<select id="imageFormat"><option value="png">PNG</option><option value="jpeg">JPG</option><option value="webp">WebP</option></select></label></details><details><summary>إعدادات الصوت</summary><p class="muted">تسجيل الصوت يتم ضمن مسار الفيديو. تصدير MP3 وWAV غير متاح في الإصدار الحالي.</p></details><details><summary>الخصوصية والتخزين</summary><label class="toggle"><span><b>تذكر الإعدادات</b><small>حفظ التفضيلات على هذا الجهاز</small></span><input id="remember" type="checkbox" checked></label><p class="muted">لا يرسل التطبيق التسجيلات إلى أي خادم.</p></details></div><div class="dialog-foot"><button class="primary-btn" id="saveSettings">حفظ الإعدادات</button></div></dialog>
+<dialog id="helpDialog"><form method="dialog" class="dialog-head"><h2>المساعدة والتوافق</h2><button class="icon-btn">×</button></form><div class="dialog-body"><p>ابدأ التسجيل، ثم اختر الشاشة أو النافذة أو علامة التبويب من نافذة المشاركة في المتصفح. اسمح بالوصول إلى الميكروفون إذا لزم الأمر.</p><p class="notice">تسجيل الشاشة يعتمد على دعم المتصفح والنظام ويتطلب HTTPS أو localhost. دعم تسجيل الشاشة من متصفح iOS/iPadOS محدود؛ استخدم مسجل الشاشة المدمج في الجهاز عند الحاجة.</p></div></dialog>
+<script src="js/compatibility.js"></script><script src="js/storage.js"></script><script src="js/recorder.js"></script><script src="js/export.js"></script><script src="js/screenshots.js"></script><script src="js/settings.js"></script><script src="js/app.js"></script>
+</body></html>
